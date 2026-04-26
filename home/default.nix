@@ -27,9 +27,16 @@
 			"github.com".identityFile = config.age.secrets.git-ssh-key.path;
 		};
 	};
-	age.secrets.git-ssh-key = {
+age.secrets.git-ssh-key = {
 		file = ../secrets/git-ssh-key.age;
 		mode = "0600";
 	};
+
+	programs.fish = {
+		shellAliases = {
+			rebuild = "sudo nixos-rebuild switch --flake .#cappuccino";
+		};
+	};
+
 	home.stateVersion = "26.05";
 }
