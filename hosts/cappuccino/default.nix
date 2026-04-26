@@ -1,9 +1,10 @@
 { config, pkgs, inputs, lib, ... }:
 
 {
-  imports = [
+imports = [
     ../shared.nix
     ./hardware-configuration.nix
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen3
   ];
 
   boot.initrd.luks.devices."luks-99617911-0cdb-4012-b833-9b23bc548194".allowDiscards = true;
