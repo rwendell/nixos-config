@@ -26,7 +26,7 @@ nixvim = {
 	};
 };
 
-	outputs = inputs @ { self, nixpkgs, agenix, home-manager, niri, nixvim, ... }: {
+	outputs = inputs @ { self, nixpkgs, agenix, home-manager, niri, nixvim, nixos-hardware, ... }: {
 
 		nixConfig = {
 			experimental-features = "nix-command flakes";
