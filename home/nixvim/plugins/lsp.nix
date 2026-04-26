@@ -1,7 +1,5 @@
 { lib, ... }:
 {
-  plugins.treesitter.enable = true;
-
   plugins.lsp.servers = {
     nil_ls.enable = true;
     rustaceanui.enable = true;

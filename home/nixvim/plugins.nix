@@ -6,5 +6,6 @@
     ./plugins/editor.nix
     ./plugins/git.nix
     ./plugins/util.nix
+    ./plugins/extras.nix
   ];
 }
