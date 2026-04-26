@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, ... }:
+{pkgs, inputs, lib, ...} :
 {
   boot.loader.systemd-boot.enable = lib.mkDefault true;
   boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
@@ -32,15 +32,32 @@
     transientPrompt.enable = true;
   };
 
-  programs.niri.enable = true;
-
-  environment.variables = {
-    SUDO_EDITOR = "${pkgs.neovim}/bin/nvim";
+  security.sudo.enable = lib.mkDefault false;
+  security.doas = {
+    enable = true;
+    extraRules = [
+      {
+        users = [ "rwendell" ];
+        persist = true;
+        keepEnv = true;
+      }
+    ];
   };
 
   environment.systemPackages = with pkgs; [
+    (pkgs.writeScriptBin "sudo" ''
+      #!/bin/sh
+      exec doas "$@"
+    '')
+    (pkgs.writeScriptBin "zen" ''
+      #!/bin/sh
+      for p in /nix/store/*zen-beta*/bin/zen-beta; do
+        if [ -x "$p" ]; then
+          exec "$p" "$@"
+        fi
+      done
+    '')
     age
-    doas
     lazygit
     opencode
     ghostty

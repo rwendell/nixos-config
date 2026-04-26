@@ -11,4 +11,8 @@
   plugins.dap-view = {
     enable = true;
   };
+
+  plugins.dap-virtual-text = {
+    enable = true;
+  };
 }

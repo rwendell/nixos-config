@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "tpm_tis" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -19,6 +19,7 @@
     };
 
   boot.initrd.luks.devices."luks-99617911-0cdb-4012-b833-9b23bc548194".device = "/dev/disk/by-uuid/99617911-0cdb-4012-b833-9b23bc548194";
+  boot.initrd.luks.devices."luks-99617911-0cdb-4012-b833-9b23bc548194".crypttabExtraOpts = [ "tpm2-device=auto" ];
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/79C6-184F";

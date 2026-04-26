@@ -35,19 +35,25 @@ nixvim = {
 					"https://nix-community.cachix.org"
 			];
 		};
-		nixosConfigurations.cappuccino = nixpkgs.lib.nixosSystem {
+nixosConfigurations.cappuccino = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { inherit inputs; };
 			modules = [
 				./hosts/cappuccino/default.nix
-					niri.nixosModules.niri
-					agenix.nixosModules.default
-					{
-						age.identityPaths = [ "/home/rwendell/.ssh/id_ed25519" ];
-						services.openssh.enable = true;
+				niri.nixosModules.niri
+				agenix.nixosModules.default
+				{
+					age.identityPaths = [ "/home/rwendell/.ssh/id_ed25519" ];
+					services.openssh.enable = true;
 
-						age.secrets.wifi.file = self + "/secrets/wifi.age";
-					}
+					age.secrets.wifi = {
+						file = self + "/secrets/wifi.age";
+						owner = "wpa_supplicant";
+						group = "wpa_supplicant";
+					};
+
+					nixpkgs.config.allowUnfree = true;
+				}
 					home-manager.nixosModules.home-manager
 					{
 						home-manager.useGlobalPkgs = true;

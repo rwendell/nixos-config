@@ -10,4 +10,12 @@
     ./plugins/debug.nix
     ./plugins/test.nix
   ];
+
+  plugins.kanso = {
+    enable = true;
+    settings.background = {
+      dark = "zen";
+      light = "pearl";
+    };
+  };
 }
