@@ -4,6 +4,8 @@
   imports = [
     ../shared.nix
     ./hardware-configuration.nix
+    ../../modules/wireless.nix
+    ../../modules/login.nix
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen3
   ];
 
@@ -27,9 +29,7 @@
 
   environment.systemPackages = with pkgs; [ tpm2-tss ];
 
-  networking.wireless.enable = true;
-  networking.wireless.secretsFile = config.age.secrets.wifi.path;
-  networking.wireless.networks."espresso".pskRaw = "ext:psk";
+  cappuccino.enableWireless = true;
 
   networking.hostName = "cappuccino";
 
@@ -39,36 +39,7 @@
     rebuild = "doas nixos-rebuild switch --flake /etc/nixos#cappuccino";
   };
 
-  # Fingerprint authentication
-  services.fprintd = {
-    enable = true;
-    tod.enable = true;
-    tod.driver = pkgs.libfprint-2-tod1-goodix;
-  };
-
-  # Polkit for fingerprint authorization
-  security.polkit.enable = true;
-
-  # PAM configuration for fingerprint auth
-  security.pam.services = {
-    greetd.fprintAuth = true;
-    doas.fprintAuth = true;
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd niri --remember";
-        user = "greeter";
-      };
-    };
-  };
-
-  # Create tuigreet cache dir for --remember feature
-  systemd.tmpfiles.rules = [
-    "d /var/cache/tuigreet 0755 greeter greeter -"
-  ];
+  cappuccino.enableLogin = true;
 
   programs.niri.enable = true;
 }
