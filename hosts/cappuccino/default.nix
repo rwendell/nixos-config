@@ -27,8 +27,12 @@ boot.initrd.luks.devices."luks-99617911-0cdb-4012-b833-9b23bc548194".allowDiscar
 			safe.directory = ["/etc/nixos"];
 		};
 	};
-	programs.fish.enable = true;
-	programs.starship.enable = true;
+programs.fish.enable = true;
+	programs.starship = {
+		enable = true;
+		transientPrompt.enable = true;
+	};
+
 	programs.niri.enable = true;
 
 	services.greetd = {
@@ -63,6 +67,7 @@ boot.initrd.luks.devices."luks-99617911-0cdb-4012-b833-9b23bc548194".allowDiscar
 	users.users.rwendell = {
 		isNormalUser = true;
 		extraGroups = [ "wheel" "video" ];
+		shell = pkgs.fish;
 	};
 
 	system.stateVersion = "26.05";
