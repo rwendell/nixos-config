@@ -4,8 +4,20 @@
   boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
   boot.initrd.systemd.enable = lib.mkDefault true;
 
+  boot.kernelParams = [ "amd_pstate=active" ];
+
   i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
   time.timeZone = lib.mkDefault "UTC";
+
+  services.tlp = {
+    enable = lib.mkDefault true;
+    settings = {
+      START_CHARGE_THRESH_BAT0 = 50;
+      STOP_CHARGE_THRESH_BAT0 = 90;
+    };
+  };
+
+  services.thermald.enable = lib.mkDefault true;
 
   programs.git = {
     enable = true;
