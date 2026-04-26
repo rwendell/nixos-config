@@ -9,6 +9,7 @@
 	age.identityPaths = [ "/home/rwendell/.ssh/id_ed25519" ];
 	programs.nixvim = {
 		enable = true;
+		defaultEditor = true;
 	};
 	programs.niri = {
 		settings = {

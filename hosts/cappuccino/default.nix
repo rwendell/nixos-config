@@ -8,18 +8,17 @@
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
 	boot.initrd.systemd.enable = true;
-	boot.initrd.luks.devices."luks-99617911-0cdb-4012-b833-9b23bc548194".allowDiscards = true;
+boot.initrd.luks.devices."luks-99617911-0cdb-4012-b833-9b23bc548194".allowDiscards = true;
 	boot.initrd.kernelModules = ["amdgpu"];
 
 	networking.wireless.enable = true;
-	networking.wireless.networks."espresso".psk = "CaffeinatedKitties";
+	networking.wireless.secretsFile = config.age.secrets.wifi.path;
+	networking.wireless.networks."espresso".pskRaw = "ext:psk";
+
 	networking.hostName = "cappuccino";
 
 	i18n.defaultLocale = "en_US.UTF-8";
-
 	time.timeZone = "UTC";
-
-	security.polkit.enable = true;
 
 	programs.git = {
 		enable = true;
@@ -29,14 +28,25 @@
 		};
 	};
 	programs.fish.enable = true;
+	programs.starship.enable = true;
 	programs.niri.enable = true;
 
+	services.greetd = {
+		enable = true;
+		settings = {
+			default_session = {
+				command = "${pkgs.niri}/bin/niri-session";
+				user = "rwendell";
+			};
+		};
+	};
+
 	environment.variables = {
-		EDITOR = "${pkgs.neovim}/bin/nvim";
 		SUDO_EDITOR = "${pkgs.neovim}/bin/nvim";
 	};
 
 	environment.systemPackages = with pkgs; [ 
+		age
 		doas
 		lazygit
 		opencode
