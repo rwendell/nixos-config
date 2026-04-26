@@ -7,5 +7,7 @@
     ./plugins/git.nix
     ./plugins/util.nix
     ./plugins/extras.nix
+    ./plugins/debug.nix
+    ./plugins/test.nix
   ];
 }
