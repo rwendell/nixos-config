@@ -8,47 +8,14 @@
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
-
-    settings = {
-      number = true;
-      relativenumber = true;
-      tabstop = 4;
-      softtabstop = 4;
-      shiftwidth = 4;
-      swapfile = false;
-      backup = false;
-      undofile = true;
-      hlsearch = true;
-      incsearch = true;
-      termguicolors = true;
-      scrolloff = 8;
-      updatetime = 50;
-      clipboard = "unnamedplus";
-      breakindent = true;
-      ignorecase = true;
-      smartcase = true;
-      splitright = true;
-      splitbelow = true;
-      inccommand = "split";
-      confirm = true;
-    };
-
-    plugins = {
-      treesitter.enable = true;
-      lsp.servers = {
-        nil_ls.enable = true;
-        rustaceanui.enable = true;
-        ts_ls.enable = true;
-        gopls.enable = true;
-        pyright.enable = true;
-      };
-    };
+    imports = [
+      ./nixvim/settings.nix
+      ./nixvim/plugins.nix
+    ];
   };
 
-  programs.fish = {
-    shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake .#cappuccino";
-    };
+  programs.fish.shellAliases = {
+    rebuild = "sudo nixos-rebuild switch --flake .#cappuccino";
   };
 
   age.identityPaths = [ "/home/rwendell/.ssh/id_ed25519" ];
