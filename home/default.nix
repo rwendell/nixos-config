@@ -20,6 +20,8 @@
 	programs.git = {
 		enable = true;
 		settings = {
+			user.email = "ryanjwendell@gmail.com";
+			user.name = "Ryan Wendell";
 			init.defaultBranch = "main";
 			"github.com".identityFile = config.age.secrets.git-ssh-key.path;
 		};

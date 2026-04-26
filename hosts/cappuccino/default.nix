@@ -36,6 +36,7 @@
 
 	environment.systemPackages = with pkgs; [ 
 		doas
+		lazygit
 		opencode
 		ghostty
 		keepassxc
