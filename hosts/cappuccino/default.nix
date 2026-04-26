@@ -7,6 +7,8 @@
 
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
+	boot.initrd.systemd.enable = true;
+	boot.initrd.luks.devices."luks-99617911-0cdb-4012-b833-9b23bc548194".allowDiscards = true;
 	boot.initrd.kernelModules = ["amdgpu"];
 
 	networking.wireless.enable = true;
