@@ -30,4 +30,16 @@
   plugins.schemastore = {
     enable = true;
   };
+
+  plugins.vimtex = {
+    enable = true;
+  };
+
+  plugins.yanky = {
+    enable = true;
+  };
+
+  plugins.fidget = {
+    enable = true;
+  };
 }
