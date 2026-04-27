@@ -1,28 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
-  programs.hyprlock = {
+  programs.vicinae = {
     enable = true;
-    settings = {
-      background = [
-        {
-          monitor = "";
-          path = "/path/to/your/background.png"; # <-- Change to your wallpaper!
-          blur = true;
-        }
-      ];
-      input-field = [
-        {
-          size = "300 60";
-          outline-thickness = 3;
-          position = "0 80";
-          monitor = "";
-          fade-on-input = true;
-          placeholder-text = "Password or fingerprint";
-          input-method = "fingerprint";
-        }
-      ];
-      # You can add clock, greeter, etc.
-    };
+    systemd.enable = true;
+    systemd.autoStart = true;
   };
 
   services.hypridle = {

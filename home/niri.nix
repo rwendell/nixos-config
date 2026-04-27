@@ -129,8 +129,8 @@
         // File manager (nemo not installed - commented out)
         // Mod+E { spawn "nemo"; }
 
-        // App launcher (rofi not installed - commented out)
-        // Mod+R { spawn "rofi" "-show" "drun"; }
+        // App launcher
+        Mod+R { spawn "vicinae" "toggle"; }
 
         // Toggle floating
         Mod+V { toggle-window-floating; }
