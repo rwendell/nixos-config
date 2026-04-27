@@ -16,6 +16,8 @@
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
+    # Build config from working tree before committing - this warning is expected during development
+    warn-dirty = false;
   };
 
   nix.registry = {
@@ -42,14 +44,13 @@
 
   programs.niri.enable = true;
 
-  # Geoclue for darkman auto location detection
+# Geoclue for darkman auto location detection
   services.geoclue2 = {
     enable = true;
     submitData = true;
   };
 
   # Specialisations for dark/light mode switching via darkman
-  # Use lib.mkForce to override the inherited stylix.base16Scheme
   specialisation = {
     # Dark mode: Kanso Zen
     dark = {

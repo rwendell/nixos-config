@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./stylix.nix
     ./niri.nix
     inputs.nixvim.homeModules.nixvim
     inputs.agenix.homeManagerModules.default
@@ -15,23 +16,25 @@
     enable = true;
   };
 
-  # Darkman for auto dark/light mode switching (home-manager module)
   services.darkman = {
     enable = true;
     settings = {
-      lat = 41.8781;  # Chicago area (fallback if geoclue fails)
-      lng = -87.6298;
-      usegeoclue = true; # Auto-detect location via geoclue
-      dbusserver = true;
-      portal = true;
-    };
-    darkModeScripts = {
-      "nixos-switch" = "doas nixos-rebuild switch --specialisation dark --flake /etc/nixos#cappuccino";
-    };
-    lightModeScripts = {
-      "nixos-switch" = "doas nixos-rebuild switch --specialisation light --flake /etc/nixos#cappuccino";
+      latitude = 41.8781;
+      longitude = -87.6298;
+      useGeoclue = true;
     };
   };
 
- 	home.stateVersion = "26.05";
+  xdg.dataFile = {
+    "darkman/dark-mode.d/nixos-switch".text = ''
+      #!/bin/sh
+      exec /run/current-system/sw/bin/nixos-rebuild switch --specialisation dark --flake /etc/nixos#cappuccino
+    '';
+    "darkman/light-mode.d/nixos-switch".text = ''
+      #!/bin/sh
+      exec /run/current-system/sw/bin/nixos-rebuild switch --specialisation light --flake /etc/nixos#cappuccino
+    '';
+  };
+
+  home.stateVersion = "26.05";
 }

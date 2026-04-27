@@ -34,6 +34,9 @@
 			nixos-dark = "cd /etc/nixos && git add -A && doas nixos-rebuild switch --specialisation dark --flake .#${config.networking.hostName}";
 			nixos-light = "cd /etc/nixos && git add -A && doas nixos-rebuild switch --specialisation light --flake .#${config.networking.hostName}";
 			nix-update = "nix flake update && nixos-switch";
+			nixos-build = "nixos-rebuild build --flake .#${config.networking.hostName}";
+			nixos-gens = "ls -lt /nix/var/nix/profiles/system";
+			nixos-current = "/run/current-system/sw/bin/nixos-version --generation";
 		};
 	};
 	programs.starship = {
@@ -52,13 +55,6 @@
 	security.sudo.enable = false;
 	security.doas = {
 		enable = true;
-		extraRules = [
-		{
-			users = [ "rwendell" ];
-			keepEnv = true;
-			persist = true;
-		}
-		];
 	};
 
 	environment.systemPackages = with pkgs; [
