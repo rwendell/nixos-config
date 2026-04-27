@@ -40,37 +40,6 @@
 
   cappuccino.enableLogin = true;
 
-  # Darkman for auto dark/light mode switching
-  # Managed at system level via systemd user service
-  systemd.user.services.darkman = {
-    enable = true;
-    serviceConfig = {
-      ExecStart = "${pkgs.darkman}/bin/darkman run";
-      Type = "dbus";
-      BusName = "nl.whynothugo.darkman";
-    };
-    environment = {
-      DARKMAN_LAT = "42.35";   # TODO: Set your latitude
-      DARKMAN_LNG = "-71.10"; # TODO: Set your longitude
-      DARKMAN_USEGEOCLUE = "false"; # Set to "true" for auto location
-    };
-  };
-
-  # Dark mode scripts (switch to dark specialisation)
-  environment.etc."darkman/dark-mode.d/nixos-switch".text = ''
-    #!/bin/sh
-    doas nixos-rebuild switch --specialisation dark --flake /etc/nixos#cappuccino
-  '';
-
-  # Light mode scripts (switch to light specialisation)
-  environment.etc."darkman/light-mode.d/nixos-switch".text = ''
-    #!/bin/sh
-    doas nixos-rebuild switch --specialisation light --flake /etc/nixos#cappuccino
-  '';
-
-  # Geoclue for darkman auto location (optional)
-  services.geoclue2.enable = true;
-
   programs.niri.enable = true;
 
   # Specialisations for dark/light mode switching via darkman

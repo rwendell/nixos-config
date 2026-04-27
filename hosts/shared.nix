@@ -29,12 +29,12 @@
 	programs.fish = {
 		enable = true;
 		shellInit = "fish_vi_key_bindings";
-		interactiveShellInit = ''
-			alias nixos-switch --description "Switch system" "cd /etc/nixos && git add -A && doas nixos-rebuild switch --flake .#${config.networking.hostName}"
-			alias nixos-dark --description "Switch to dark theme" "cd /etc/nixos && git add -A && doas nixos-rebuild switch --specialisation dark --flake .#${config.networking.hostName}"
-			alias nixos-light --description "Switch to light theme" "cd /etc/nixos && git add -A && doas nixos-rebuild switch --specialisation light --flake .#${config.networking.hostName}"
-			alias nix-update --description "Update flake and switch" "nix flake update && nixos-switch"
-		'';
+		shellAliases = {
+			nixos-switch = "cd /etc/nixos && git add -A && doas nixos-rebuild switch --flake .#${config.networking.hostName}";
+			nixos-dark = "cd /etc/nixos && git add -A && doas nixos-rebuild switch --specialisation dark --flake .#${config.networking.hostName}";
+			nixos-light = "cd /etc/nixos && git add -A && doas nixos-rebuild switch --specialisation light --flake .#${config.networking.hostName}";
+			nix-update = "nix flake update && nixos-switch";
+		};
 	};
 	programs.starship = {
 		enable = true;

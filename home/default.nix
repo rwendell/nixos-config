@@ -15,7 +15,23 @@
     enable = true;
   };
 
-  # Darkman is managed at system level (services.darkman in cappuccino/default.nix)
+  # Darkman for auto dark/light mode switching (home-manager module)
+  services.darkman = {
+    enable = true;
+    settings = {
+      lat = 42.35;  # TODO: Set your latitude
+      lng = -71.10; # TODO: Set your longitude
+      usegeoclue = false; # Set to true for auto location via geoclue
+      dbusserver = true;
+      portal = true;
+    };
+    darkModeScripts = {
+      "nixos-switch" = "doas nixos-rebuild switch --specialisation dark --flake /etc/nixos#cappuccino";
+    };
+    lightModeScripts = {
+      "nixos-switch" = "doas nixos-rebuild switch --specialisation light --flake /etc/nixos#cappuccino";
+    };
+  };
 
- 	home.stateVersion = "26.05";
+	home.stateVersion = "26.05";
 }
