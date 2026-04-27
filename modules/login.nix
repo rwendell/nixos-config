@@ -4,15 +4,15 @@
     cappuccino.enableLogin = lib.mkEnableOption "login and biometric settings for cappuccino";
   };
   config = lib.mkIf config.cappuccino.enableLogin {
-    # Fingerprint authentication
+    # Fingerprint authentication service
     services.fprintd = {
       enable = true;
       tod.enable = true;
       tod.driver = pkgs.libfprint-2-tod1-goodix;
     };
-    # Polkit for fingerprint authorization
+    # Polkit for authorization
     security.polkit.enable = true;
-    # PAM configuration for fingerprint auth
+    # PAM: fingerprint OR password (fingerprint enabled, falls back to password)
     security.pam.services = {
       greetd.fprintAuth = true;
       doas.fprintAuth = true;

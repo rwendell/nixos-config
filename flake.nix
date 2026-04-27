@@ -32,7 +32,11 @@ nixvim = {
 			experimental-features = "nix-command flakes";
 			substituters = [
 				"https://cache.nixos.org"
-					"https://nix-community.cachix.org"
+				"https://nix-community.cachix.org"
+			];
+			trusted-public-keys = [
+				"cache.nixos.org-1:6NCHdD59X431o0gWypQs7mMyU12JxmZU4PR3tw6CMO8="
+				"nix-community.cachix.org-1:mB9FSh9qf2QlDqenJ9B6rUvLx2ItikxNQUlNeKzelas="
 			];
 		};
 nixosConfigurations.cappuccino = nixpkgs.lib.nixosSystem {
