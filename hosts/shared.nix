@@ -69,6 +69,7 @@
 			hyprlock
 			awww
 			wpa_supplicant
+			vicinae
 	];
 
 	users.users.rwendell = {

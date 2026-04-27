@@ -9,8 +9,7 @@
 
     // Autostart commands (commented out if not installed)
     spawn-at-startup "uwsm" "app" "-s" "b" "--" "swww-daemon"
-    // spawn-at-startup "uwsm" "app" "--" "darkman" "run"  // darkman not installed
-    // spawn-at-startup "hyprpm" "reload" "-nn"  // hyprpm not installed
+    spawn-at-startup "uwsm" "app" "--" "env" "QT_QPA_PLATFORM=wayland" "vicinae" "server"
 
     // Input configuration
     input {
