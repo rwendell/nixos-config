@@ -1,42 +1,15 @@
 {inputs, config, pkgs, ...} :
 {
-	imports = [
-		./niri.nix
-			inputs.nixvim.homeModules.nixvim
-			inputs.agenix.homeManagerModules.default
-	];
+  imports = [
+    ./niri.nix
+    inputs.nixvim.homeModules.nixvim
+    inputs.agenix.homeManagerModules.default
+    ./lock.nix
+    ./nixvim
+  ];
 
-	programs.nixvim = {
-		enable = true;
-		defaultEditor = true;
-		imports = [
-			./nixvim/settings.nix
-				./nixvim/plugins.nix
-		];
-	};
+  programs.nixvim.enable = true;
 
-	programs.fish.shellAliases = {
-		rebuild = "doas nixos-rebuild switch --flake /etc/nixos#cappuccino";
-	};
-
-	home.packages = with pkgs; [ nil ];
-
-	age.identityPaths = [ "/home/rwendell/.ssh/id_ed25519" ];
-
-	programs.git = {
-		enable = true;
-		settings = {
-			user.email = "ryanjwendell@gmail.com";
-			user.name = "Ryan Wendell";
-			init.defaultBranch = "main";
-			"github.com".identityFile = config.age.secrets.git-ssh-key.path;
-		};
-	};
-
-	age.secrets.git-ssh-key = {
-		file = ../secrets/git-ssh-key.age;
-		mode = "0600";
-	};
 
 	home.stateVersion = "26.05";
 }

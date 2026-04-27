@@ -51,10 +51,6 @@
 		enable = true;
 	};
 
-	plugins.vimtex = {
-		enable = true;
-	};
-
 	plugins.yanky = {
 		enable = true;
 	};
@@ -83,10 +79,19 @@
 		enable = true;
 	};
 
-	plugins.vim.suda = {
+	plugins.kanso = {
 		enable = true;
-		path = "doas";
-		smart_edit = 1;
+		settings.background = {
+			dark = "zen";
+			light = "pearl";
+		};
+	};
 
+	plugins.vim-suda = {
+		enable = true;
+		settings = {
+			executable = "doas";
+			smart_edit = 1;
+		};
 	};
 }

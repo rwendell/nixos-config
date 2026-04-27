@@ -9,21 +9,20 @@
 
   plugins.lsp.servers = {
     nil_ls.enable = true;
-    rustaceanui.enable = true;
+    rustaceanvim.enable = true;
     ts_ls.enable = true;
     gopls.enable = true;
     pyright.enable = true;
     yamlls.enable = true;
-    ruff_lsp.enable = true;
+    ruff.enable = true;
     jsonls.enable = true;
   };
 
   plugins.lint = {
     enable = true;
     autoLoad = true;
-  };
-
-  plugins.mason = {
-    enable = true;
+    lintersByFt = {
+      yaml = [ "yamllint" ];
+    };
   };
 }
