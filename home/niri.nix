@@ -1,7 +1,8 @@
 { ... }:
 {
   programs.niri.config = ''
-    // Niri config converted from Hyprland config
+    // Niri config inspired by Kanso Zen/Pearl theme (minimal mode)
+    // Focus ring and border use transparent active color for minimal feel
     // Programs (commented out if not installed)
 
     // Note: Environment variables should be set via home-manager or shell profile
@@ -44,13 +45,13 @@
 
         focus-ring {
             width 2
-            active-color "#7fc8ff"
+            active-color "transparent"
             inactive-color "#505050"
         }
 
         border {
             width 4
-            active-color "#7fc8ff"
+            active-color "transparent"
             inactive-color "#505050"
         }
 

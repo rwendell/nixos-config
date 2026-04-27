@@ -8,6 +8,10 @@
 			url = "github:nix-community/home-manager/master";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		stylix = {
+			url = "github:danth/stylix";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		agenix = {
 			url = "github:ryantm/agenix";
 			inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +30,7 @@ nixvim = {
 	};
 };
 
-	outputs = inputs @ { self, nixpkgs, agenix, home-manager, niri, nixvim, nixos-hardware, ... }: {
+	outputs = inputs @ { self, nixpkgs, agenix, home-manager, niri, nixvim, nixos-hardware, stylix, ... }: {
 
 		nixConfig = {
 			experimental-features = "nix-command flakes";
@@ -45,6 +49,7 @@ nixosConfigurations.cappuccino = nixpkgs.lib.nixosSystem {
 			modules = [
 				./hosts/cappuccino/default.nix
 				niri.nixosModules.niri
+				stylix.nixosModules.default
 				agenix.nixosModules.default
 				{
 					age.identityPaths = [ "/home/rwendell/.ssh/id_ed25519" ];

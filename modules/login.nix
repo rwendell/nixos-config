@@ -21,7 +21,7 @@
     services.greetd.enable = true;
     services.greetd.settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --cmd ${pkgs.niri}/bin/niri-session --remember";
+        command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session --remember";
         user = "greeter";
       };
     };

@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ../../modules/wireless.nix
     ../../modules/login.nix
+    ../../modules/stylix.nix
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen3
   ];
 
@@ -39,7 +40,29 @@
     rebuild = "doas nixos-rebuild switch --flake /etc/nixos#cappuccino";
   };
 
-  cappuccino.enableLogin = true;
+cappuccino.enableLogin = true;
+
+  # GeoClue for darkman auto location (optional)
+  services.geoclue2.enable = true;
 
   programs.niri.enable = true;
+
+  # Specialisations for dark/light mode switching via darkman
+  # Use lib.mkForce to override the inherited stylix.base16Scheme
+  specialisation = {
+    # Dark mode: Kanso Zen
+    dark = {
+      inheritParentConfig = true;
+      configuration = { lib, ... }: {
+        stylix.base16Scheme = lib.mkForce ./../../modules/themes/yaml/kanso-zen.yaml;
+      };
+    };
+    # Light mode: Kanso Pearl
+    light = {
+      inheritParentConfig = true;
+      configuration = { lib, ... }: {
+        stylix.base16Scheme = lib.mkForce ./../../modules/themes/yaml/kanso-pearl.yaml;
+      };
+    };
+  };
 }
