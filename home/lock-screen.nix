@@ -1,11 +1,5 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 {
-  programs.vicinae = {
-    enable = true;
-    systemd.enable = true;
-    systemd.autoStart = true;
-  };
-
   services.hypridle = {
     enable = true;
     settings = {
