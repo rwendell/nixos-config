@@ -7,7 +7,7 @@
 	boot.kernelParams = [ "amd_pstate=active" ];
 
 	i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
-	time.timeZone = lib.mkDefault "UTC";
+  time.timeZone = "America/Chicago";
 
 	services.tlp = {
 		enable = lib.mkDefault true;

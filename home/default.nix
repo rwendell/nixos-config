@@ -19,7 +19,9 @@
   services.darkman = {
     enable = true;
     settings = {
-      usegeoclue = true; # Enable auto location detection
+      lat = 41.8781;  # Chicago area (fallback if geoclue fails)
+      lng = -87.6298;
+      usegeoclue = true; # Auto-detect location via geoclue
       dbusserver = true;
       portal = true;
     };
