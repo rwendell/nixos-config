@@ -4,7 +4,7 @@
     ./niri.nix
     inputs.nixvim.homeModules.nixvim
     inputs.agenix.homeManagerModules.default
-    ./lock.nix
+    ./lock-screen.nix
     ./nixvim
   ];
 
