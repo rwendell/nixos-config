@@ -42,6 +42,12 @@
 
   programs.niri.enable = true;
 
+  # Geoclue for darkman auto location detection
+  services.geoclue2 = {
+    enable = true;
+    submitData = true;
+  };
+
   # Specialisations for dark/light mode switching via darkman
   # Use lib.mkForce to override the inherited stylix.base16Scheme
   specialisation = {

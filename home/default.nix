@@ -19,9 +19,7 @@
   services.darkman = {
     enable = true;
     settings = {
-      lat = 42.35;  # TODO: Set your latitude
-      lng = -71.10; # TODO: Set your longitude
-      usegeoclue = false; # Set to true for auto location via geoclue
+      usegeoclue = true; # Enable auto location detection
       dbusserver = true;
       portal = true;
     };
@@ -33,5 +31,5 @@
     };
   };
 
-	home.stateVersion = "26.05";
+ 	home.stateVersion = "26.05";
 }
