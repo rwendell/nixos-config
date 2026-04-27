@@ -30,13 +30,11 @@
 		enable = true;
 		shellInit = "fish_vi_key_bindings";
 		shellAliases = {
-			nixos-switch = "cd /etc/nixos && git add -A && doas nixos-rebuild switch --flake .#${config.networking.hostName}";
-			nixos-dark = "cd /etc/nixos && git add -A && doas nixos-rebuild switch --specialisation dark --flake .#${config.networking.hostName}";
-			nixos-light = "cd /etc/nixos && git add -A && doas nixos-rebuild switch --specialisation light --flake .#${config.networking.hostName}";
-			nix-update = "nix flake update && nixos-switch";
-			nixos-build = "nixos-rebuild build --flake .#${config.networking.hostName}";
-			nixos-gens = "ls -lt /nix/var/nix/profiles/system";
-			nixos-current = "/run/current-system/sw/bin/nixos-version --generation";
+			nixos-switch = "git -C /etc/nixos add -A && doas nixos-rebuild switch --flake /etc/nixos#${config.networking.hostName}";
+			nixos-dark = "git -C /etc/nixos add -A && doas nixos-rebuild switch --specialisation dark --flake /etc/nixos#${config.networking.hostName}";
+			nixos-light = "git -C /etc/nixos add -A && doas nixos-rebuild switch --specialisation light --flake /etc/nixos#${config.networking.hostName}";
+			nixos-update = "nix flake update && nixos-switch";
+			nixos-gen = "nix-env --list-generations --profile /nix/var/nix/profiles/system | grep '(current)' | awk '{print \\$1}'";
 		};
 	};
 	programs.starship = {

@@ -20,7 +20,7 @@
 			url = "github:sodiboo/niri-flake";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-nixvim = {
+	nixvim = {
 		url = "github:nix-community/nixvim";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
@@ -28,7 +28,7 @@ nixvim = {
 		url = "github:0xc000022070/zen-browser-flake";
 		inputs.nixpkgs.follows = "nixpkgs";
 	};
-};
+	};
 
 	outputs = inputs @ { self, nixpkgs, agenix, home-manager, niri, nixvim, nixos-hardware, stylix, ... }: {
 

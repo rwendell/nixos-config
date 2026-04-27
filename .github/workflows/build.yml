@@ -1,0 +1,30 @@
+name: Build NixOS
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Build system
+        run: |
+          nixos-rebuild build --flake .#cappuccino
+
+      - name: Build ISO image (optional)
+        run: |
+          nixos-rebuild build-image --flake .#cappuccino
+        continue-on-error: true
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: nixos-artifacts
+          path: result
