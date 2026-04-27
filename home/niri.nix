@@ -7,9 +7,13 @@
     // Note: Environment variables should be set via home-manager or shell profile
     // XCURSOR_SIZE and HYPRCURSOR_SIZE are set in home-manager environment
 
-    // Autostart commands (commented out if not installed)
-    spawn-at-startup "uwsm" "app" "-s" "b" "--" "swww-daemon"
-    spawn-at-startup "uwsm" "app" "--" "env" "QT_QPA_PLATFORM=wayland" "vicinae" "server"
+    environment {
+        QT_QPA_PLATFORM "wayland"
+    }
+
+    // Autostart commands
+    spawn-at-startup "swww-daemon"
+    spawn-at-startup "vicinae" "server"
 
     // Input configuration
     input {
