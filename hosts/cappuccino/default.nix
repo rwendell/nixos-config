@@ -36,11 +36,9 @@
 
   programs.git.config.safe.directory = ["/etc/nixos"];
 
-  programs.fish.shellAliases = {
-    # Uses dynamic hostname from shared.nix (nixos-switch)
-  };
+  programs.fish.shellAliases = {};
 
-cappuccino.enableLogin = true;
+  cappuccino.enableLogin = true;
 
   # GeoClue for darkman auto location (optional)
   services.geoclue2.enable = true;

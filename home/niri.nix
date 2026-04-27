@@ -2,7 +2,11 @@
 {
   programs.niri.config = ''
     // Niri config inspired by Kanso Zen/Pearl theme (minimal mode)
-    // Focus ring and border use transparent active color for minimal feel
+    // Focus ring and border use same color for minimal feel
+
+    // Prefer server-side decorations to avoid blue fill behind transparent windows
+    prefer-no-csd
+
     // Programs (commented out if not installed)
 
     // Note: Environment variables should be set via home-manager or shell profile
@@ -43,15 +47,15 @@
     layout {
         gaps 5
 
-        focus-ring {
+                focus-ring {
             width 2
-            active-color "transparent"
+            active-color "#505050"
             inactive-color "#505050"
         }
 
         border {
             width 4
-            active-color "transparent"
+            active-color "#505050"
             inactive-color "#505050"
         }
 
@@ -117,6 +121,12 @@
     window-rule {
         match app-id="ghostty"
         opacity 0.8
+    }
+
+    // Disable background fill for transparent windows (fixes blue overlay)
+    window-rule {
+        match app-id="ghostty"
+        draw-border-with-background false
     }
 
     // Keybindings
