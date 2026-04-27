@@ -37,9 +37,7 @@
   programs.git.config.safe.directory = ["/etc/nixos"];
 
   programs.fish.shellAliases = {
-    rebuild = "cd /etc/nixos && git add -A && doas nixos-rebuild switch --flake .#cappuccino";
-    rebuild-dark = "cd /etc/nixos && git add -A && doas nixos-rebuild switch --specialisation dark --flake .#cappuccino";
-    rebuild-light = "cd /etc/nixos && git add -A && doas nixos-rebuild switch --specialisation light --flake .#cappuccino";
+    # Uses dynamic hostname from shared.nix (nixos-switch)
   };
 
 cappuccino.enableLogin = true;
