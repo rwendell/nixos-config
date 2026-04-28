@@ -54,7 +54,7 @@
         }
 
         border {
-            width 1;
+            width 0;
             active-color "#505050";
             inactive-color "#505050";
         }
