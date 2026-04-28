@@ -47,10 +47,10 @@
     layout {
         gaps 5
 
-                focus-ring {
-            width 2
-            active-color "#505050"
-            inactive-color "#505050"
+        focus-ring {
+            width 0;
+            active-color "#505050";
+            inactive-color "#505050";
         }
 
         border {
