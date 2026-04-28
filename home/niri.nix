@@ -54,9 +54,9 @@
         }
 
         border {
-            width 4
-            active-color "#505050"
-            inactive-color "#505050"
+            width 1;
+            active-color "#505050";
+            inactive-color "#505050";
         }
 
         shadow {
