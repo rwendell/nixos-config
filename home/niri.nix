@@ -60,13 +60,7 @@
         }
 
         shadow {
-            // Uncomment to enable shadows
-            // on
-            softness 4
-            spread 0
-            offset x=0 y=2
-            draw-behind-window true
-            color "#1a1a1aee"
+            off
         }
 
         // Blur support was added in niri 26.04
