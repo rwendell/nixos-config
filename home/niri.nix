@@ -59,9 +59,15 @@
             inactive-color "#505050";
         }
 
-        shadow {
-            off
-        }
+        // shadow disabled for flat look
+        // shadow {
+        //     on
+        //     softness 4
+        //     spread 0
+        //     offset x=0 y=2
+        //     draw-behind-window true
+        //     color "#1a1a1aee"
+        // }
 
         // Blur support was added in niri 26.04
         // Uncomment when using a version that supports it
