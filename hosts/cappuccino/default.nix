@@ -6,7 +6,7 @@
     ./hardware-configuration.nix
     ../../modules/wireless.nix
     ../../modules/login.nix
-    ../../modules/stylix.nix
+    ../../modules/stylix
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen3
   ];
 
@@ -56,14 +56,14 @@
     dark = {
       inheritParentConfig = true;
       configuration = { lib, ... }: {
-        stylix.base16Scheme = lib.mkForce ./../../modules/themes/yaml/kanso-zen.yaml;
+        stylix.base16Scheme = lib.mkForce ./../../modules/stylix/themes/kanso-zen.yaml;
       };
     };
     # Light mode: Kanso Pearl
     light = {
       inheritParentConfig = true;
       configuration = { lib, ... }: {
-        stylix.base16Scheme = lib.mkForce ./../../modules/themes/yaml/kanso-pearl.yaml;
+        stylix.base16Scheme = lib.mkForce ./../../modules/stylix/themes/kanso-pearl.yaml;
       };
     };
   };

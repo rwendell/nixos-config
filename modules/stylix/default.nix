@@ -3,6 +3,6 @@
 {
   stylix = {
     enable = true;
-    base16Scheme = ../themes/kanso-zen.yaml;
+    base16Scheme = ./themes/kanso-zen.yaml;
   };
 }

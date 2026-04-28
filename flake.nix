@@ -20,14 +20,14 @@
 			url = "github:sodiboo/niri-flake";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-	nixvim = {
-		url = "github:nix-community/nixvim";
-		inputs.nixpkgs.follows = "nixpkgs";
-	};
-	zen-browser = {
-		url = "github:0xc000022070/zen-browser-flake";
-		inputs.nixpkgs.follows = "nixpkgs";
-	};
+		nixvim = {
+			url = "github:nix-community/nixvim";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+		zen-browser = {
+			url = "github:0xc000022070/zen-browser-flake";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = inputs @ { self, nixpkgs, agenix, home-manager, niri, nixvim, nixos-hardware, stylix, ... }: {
@@ -43,7 +43,7 @@
 				"nix-community.cachix.org-1:mB9FSh9qf2QlDqenJ9B6rUvLx2ItikxNQUlNeKzelas="
 			];
 		};
-nixosConfigurations.cappuccino = nixpkgs.lib.nixosSystem {
+		nixosConfigurations.cappuccino = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { inherit inputs; };
 			modules = [
@@ -63,15 +63,15 @@ nixosConfigurations.cappuccino = nixpkgs.lib.nixosSystem {
 
 					nixpkgs.config.allowUnfree = true;
 				}
-					home-manager.nixosModules.home-manager
-					{
-						home-manager.useGlobalPkgs = true;
-						home-manager.useUserPackages = true;
-						home-manager.users.rwendell = import ./home/default.nix;
-						home-manager.extraSpecialArgs = { inherit inputs; };
-						home-manager.backupFileExtension = "backup";
-						home-manager.sharedModules = [];
-					}
+				home-manager.nixosModules.home-manager
+				{
+					home-manager.useGlobalPkgs = true;
+					home-manager.useUserPackages = true;
+					home-manager.users.rwendell = import ./home/default.nix;
+					home-manager.extraSpecialArgs = { inherit inputs; };
+					home-manager.backupFileExtension = "backup";
+					home-manager.sharedModules = [];
+				}
 			];
 		};
 	};
