@@ -63,9 +63,12 @@
             top 10;
             bottom 10;
         }
+    }
 
-        // Rounded corners for windows
-        corner-radius 10;
+    // Rounded corners for tiled windows (requires niri >= 0.1.6)
+    window-rule {
+        geometry-corner-radius 10;
+        clip-to-geometry true;
     }
 
     // Animations
