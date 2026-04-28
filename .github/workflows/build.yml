@@ -13,14 +13,17 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            experimental-features = nix-command flakes
 
       - name: Build system
         run: |
-          nixos-rebuild build --flake .#cappuccino
+          nix build --print-build-logs .#nixosConfigurations.cappuccino.config.system.build.toplevel
 
       - name: Build ISO image (optional)
         run: |
-          nixos-rebuild build-image --flake .#cappuccino
+          nix build --print-build-logs .#nixosConfigurations.cappuccino.config.system.build.isoImage
         continue-on-error: true
 
       - uses: actions/upload-artifact@v4
