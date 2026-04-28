@@ -45,13 +45,75 @@
 
     // Layout configuration
     layout {
-        gaps 5
+        gaps 0;
 
         focus-ring {
             width 0;
             active-color "#505050";
             inactive-color "#505050";
         }
+
+        border {
+            width 0;
+            active-color "#505050";
+            inactive-color "#505050";
+        }
+
+        shadow {
+            // shadow disabled for flat look
+            // shadow {
+            //     on;
+            //     softness 4;
+            //     spread 0;
+            //     offset x=0 y=2;
+            //     draw-behind-window true;
+            //     color "#1a1a1aee";
+            // }
+        }
+
+        // Padding around windows at screen edges
+        struts {
+            left 10;
+            right 10;
+            top 10;
+            bottom 10;
+        }
+    }
+
+        border {
+            width 0;
+            active-color "#505050";
+            inactive-color "#505050";
+        }
+
+        shadow {
+            // shadow disabled for flat look
+            // shadow {
+            //     on
+            //     softness 4
+            //     spread 0
+            //     offset x=0 y=2
+            //     draw-behind-window true
+            //     color "#1a1a1aee"
+            // }
+        }
+
+        // Blur support was added in niri 26.04
+        // Uncomment when using a version that supports it
+        // blur {
+        //     on
+        //     size 3
+        //     passes 1
+        // }
+
+        // Removed negative struts - windows now have padding at screen edges
+        // struts {
+        //     left -5
+        //     right -5
+        //     top -5
+        //     bottom -5
+        // }
+    }
 
         border {
             width 0;
