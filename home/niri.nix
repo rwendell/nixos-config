@@ -46,7 +46,7 @@
 
     // Layout configuration
     layout {
-        gaps 0;
+        gaps 10;
 
         focus-ring {
             width 0;
@@ -63,6 +63,9 @@
             top 10;
             bottom 10;
         }
+
+        // Rounded corners for windows
+        corner-radius 10;
     }
 
     // Animations
