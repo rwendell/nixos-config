@@ -43,35 +43,20 @@
         focus-follows-mouse
     }
 
+
     // Layout configuration
     layout {
         gaps 0;
 
         focus-ring {
             width 0;
-            active-color "#505050";
-            inactive-color "#505050";
         }
 
         border {
             width 0;
-            active-color "#505050";
-            inactive-color "#505050";
         }
 
-        shadow {
-            // shadow disabled for flat look
-            // shadow {
-            //     on;
-            //     softness 4;
-            //     spread 0;
-            //     offset x=0 y=2;
-            //     draw-behind-window true;
-            //     color "#1a1a1aee";
-            // }
-        }
-
-        // Padding around windows at screen edges
+        // Padding at screen edges (struts reserves space for panels)
         struts {
             left 10;
             right 10;
@@ -80,115 +65,48 @@
         }
     }
 
-        border {
-            width 0;
-            active-color "#505050";
-            inactive-color "#505050";
-        }
-
-        shadow {
-            // shadow disabled for flat look
-            // shadow {
-            //     on
-            //     softness 4
-            //     spread 0
-            //     offset x=0 y=2
-            //     draw-behind-window true
-            //     color "#1a1a1aee"
-            // }
-        }
-
-        // Blur support was added in niri 26.04
-        // Uncomment when using a version that supports it
-        // blur {
-        //     on
-        //     size 3
-        //     passes 1
-        // }
-
-        // Removed negative struts - windows now have padding at screen edges
-        // struts {
-        //     left -5
-        //     right -5
-        //     top -5
-        //     bottom -5
-        // }
-    }
-
-        border {
-            width 0;
-            active-color "#505050";
-            inactive-color "#505050";
-        }
-
-        // shadow disabled for flat look
-        // shadow {
-        //     on
-        //     softness 4
-        //     spread 0
-        //     offset x=0 y=2
-        //     draw-behind-window true
-        //     color "#1a1a1aee"
-        // }
-
-        // Blur support was added in niri 26.04
-        // Uncomment when using a version that supports it
-        // blur {
-        //     on
-        //     size 3
-        //     passes 1
-        // }
-
-        struts {
-            left -5
-            right -5
-            top -5
-            bottom -5
-        }
-    }
-
     // Animations
     animations {
         // Uncomment to turn off all animations
-        // off
+        // off;
 
         // Slow down all animations by this factor
-        // slowdown 3.0
+        // slowdown 3.0;
 
         // Individual animations - niri uses spring or easing curves
         window-open {
-            duration-ms 150
-            curve "ease-out-expo"
+            duration-ms 150;
+            curve "ease-out-expo";
         }
 
         window-close {
-            duration-ms 150
-            curve "ease-out-quad"
+            duration-ms 150;
+            curve "ease-out-quad";
         }
 
         horizontal-view-movement {
-            spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+            spring damping-ratio=1.0 stiffness=800 epsilon=0.0001;
         }
 
         window-movement {
-            spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+            spring damping-ratio=1.0 stiffness=800 epsilon=0.0001;
         }
 
         window-resize {
-            spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+            spring damping-ratio=1.0 stiffness=800 epsilon=0.0001;
         }
     }
 
     // Window rules
     window-rule {
-        match app-id="ghostty"
-        opacity 0.8
+        match app-id="ghostty";
+        opacity 0.8;
     }
 
     // Disable background fill for transparent windows (fixes blue overlay)
     window-rule {
-        match app-id="ghostty"
-        draw-border-with-background false
+        match app-id="ghostty";
+        draw-border-with-background false;
     }
 
     // Keybindings
