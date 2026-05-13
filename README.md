@@ -1,3 +1,16 @@
+# TO DO
+- [ ] Setup aliases:
+     ```alias cat bat
+    alias cd __zoxide_z
+    alias cdi __zoxide_zi
+    alias diff batdiff
+    alias find fd
+    alias less bat
+    alias ls 'eza --icons'
+    alias man batman
+    alias sed sd
+    ```
+
 # NixOS Configuration
 
 My NixOS dotfiles managed via Home Manager + NixOS flake.
